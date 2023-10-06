@@ -21,12 +21,8 @@ with open ("index.html") as file:
     src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
-cofee_href = soup.find(class_="pim-list__item pim-list__item--standart ga-event")
-# cofee_text = soup.find_all("div", class_="pim-list__item-title js-crop-text") # рабочий вариант
-# for i in cofee_text: # Рабочий вариант
-#      i_text = i.text # Рабочий вариант
-#      print(i_text) # Рабочий вариант
+cofee_href = soup.find_all(class_="pim-list__item pim-list__item--standart ga-event")
 for item in cofee_href:
-    item_text = item.find("div", class_="pim-list__item-content").text()
-    # item_href = "https://www.globus.ru" + item.get("href")
-    print(item_text)
+    item_text = item.find("div", class_="pim-list__item-title js-crop-text")
+    item_href = "https://www.globus.ru" + item.get("href")
+    print(item_href + item_text.text)
